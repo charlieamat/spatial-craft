@@ -1,5 +1,5 @@
 {
-    "name": "BlankProject",
+    "name": "SpatialCraft",
     "references": [
         "Improbable.Gdk.Core",
         "Improbable.Gdk.Generated",

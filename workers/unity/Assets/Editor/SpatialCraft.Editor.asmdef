@@ -1,7 +1,7 @@
 {
-    "name": "BlankProject.Editor",
+    "name": "SpatialCraft.Editor",
     "references": [
-        "BlankProject",
+        "SpatialCraft",
         "Improbable.Gdk.BuildSystem",
         "Improbable.Gdk.Core",
         "Improbable.Gdk.Generated",
@@ -12,5 +12,9 @@
         "Editor"
     ],
     "excludePlatforms": [],
-    "allowUnsafeCode": false
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
 }

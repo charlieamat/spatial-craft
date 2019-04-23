@@ -2,60 +2,57 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlankProject.Editor
+internal class SnapshotEditorWindow : EditorWindow
 {
-    internal class SnapshotEditorWindow : EditorWindow
+    private SnapshotGenerator.Arguments arguments;
+
+    [MenuItem("SpatialOS/Generate snapshot")]
+    public static void GenerateMenuItem()
     {
-        private SnapshotGenerator.Arguments arguments;
+        GetWindow<SnapshotEditorWindow>().Show();
+    }
 
-        [MenuItem("SpatialOS/Generate snapshot")]
-        public static void GenerateMenuItem()
+    public void Awake()
+    {
+        minSize = new Vector2(200, 120);
+        titleContent = new GUIContent("Generate snapshot");
+
+        SetDefaults();
+    }
+
+    private void SetDefaults()
+    {
+        arguments = new SnapshotGenerator.Arguments
         {
-            GetWindow<SnapshotEditorWindow>().Show();
-        }
+            OutputPath = Path.GetFullPath(
+                Path.Combine(
+                    Application.dataPath,
+                    "..",
+                    "..",
+                    "..",
+                    "snapshots",
+                    "default.snapshot"))
+        };
+    }
 
-        public void Awake()
+    public void OnGUI()
+    {
+        using (new EditorGUILayout.VerticalScope())
         {
-            minSize = new Vector2(200, 120);
-            titleContent = new GUIContent("Generate snapshot");
-
-            SetDefaults();
-        }
-
-        private void SetDefaults()
-        {
-            arguments = new SnapshotGenerator.Arguments
+            if (GUILayout.Button("Defaults"))
             {
-                OutputPath = Path.GetFullPath(
-                    Path.Combine(
-                        Application.dataPath,
-                        "..",
-                        "..",
-                        "..",
-                        "snapshots",
-                        "default.snapshot"))
-            };
-        }
+                SetDefaults();
+                Repaint();
+            }
 
-        public void OnGUI()
-        {
-            using (new EditorGUILayout.VerticalScope())
+            arguments.OutputPath = EditorGUILayout.TextField("Snapshot path", arguments.OutputPath);
+
+            var shouldDisable = string.IsNullOrEmpty(arguments.OutputPath);
+            using (new EditorGUI.DisabledScope(shouldDisable))
             {
-                if (GUILayout.Button("Defaults"))
+                if (GUILayout.Button("Generate snapshot"))
                 {
-                    SetDefaults();
-                    Repaint();
-                }
-
-                arguments.OutputPath = EditorGUILayout.TextField("Snapshot path", arguments.OutputPath);
-
-                var shouldDisable = string.IsNullOrEmpty(arguments.OutputPath);
-                using (new EditorGUI.DisabledScope(shouldDisable))
-                {
-                    if (GUILayout.Button("Generate snapshot"))
-                    {
-                        SnapshotGenerator.Generate(arguments);
-                    }
+                    SnapshotGenerator.Generate(arguments);
                 }
             }
         }
