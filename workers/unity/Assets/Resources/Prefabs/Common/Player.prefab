@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9055913394256819715}
   - component: {fileID: 4654999582777395810}
   - component: {fileID: 305116755063603640}
+  - component: {fileID: 7188395108868730272}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -91,3 +92,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7188395108868730272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500358445197442074}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78feab8868282945ad03dd56b17ce6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReceiveStrategies:
+  - {fileID: 11400000, guid: e495ce11c95443541a8b6155b326f3a8, type: 2}
+  - {fileID: 11400000, guid: a8ba48c08dd20464486c5c91d766b2f8, type: 2}
+  SendStrategies:
+  - {fileID: 11400000, guid: 95e4d584e7d62214899e2ae19d875ed8, type: 2}
+  - {fileID: 11400000, guid: 1400dbef500608b43a2c0868d2151490, type: 2}
+  SetKinematicWhenNotAuthoritative: 1

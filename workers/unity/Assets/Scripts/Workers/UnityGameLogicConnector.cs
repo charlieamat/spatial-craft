@@ -18,6 +18,7 @@ public class UnityGameLogicConnector : DefaultWorkerConnector
     {
         Worker.World.GetOrCreateManager<MetricSendSystem>();
         PlayerLifecycleHelper.AddServerSystems(Worker.World);
+        TransformSynchronizationHelper.AddServerSystems(Worker.World);
         GameObjectCreationHelper.EnableStandardGameObjectCreation(Worker.World);
     }
 

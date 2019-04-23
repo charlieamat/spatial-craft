@@ -16,6 +16,7 @@ public class UnityClientConnector : DefaultWorkerConnector
     protected override void HandleWorkerConnectionEstablished()
     {
         PlayerLifecycleHelper.AddClientSystems(Worker.World);
+        TransformSynchronizationHelper.AddClientSystems(Worker.World);
         GameObjectCreationHelper.EnableStandardGameObjectCreation(Worker.World);
     }
 
