@@ -8,6 +8,7 @@
         "Improbable.Gdk.Mobile.iOS",
         "Improbable.Gdk.TransformSynchronization",
         "Improbable.Gdk.PlayerLifecycle",
+        "Improbable.Gdk.GameObjectCreation",
         "Unity.Entities",
         "Unity.Entities.Hybrid",
         "Unity.Mathematics"
@@ -15,5 +16,9 @@
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": false
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
 }

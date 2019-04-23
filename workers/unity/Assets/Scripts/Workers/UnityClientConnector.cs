@@ -1,5 +1,7 @@
 ﻿using Improbable.Gdk.Core;
+using Improbable.Gdk.GameObjectCreation;
 using Improbable.Gdk.PlayerLifecycle;
+using Improbable.Gdk.TransformSynchronization;
 using Improbable.Worker.CInterop;
 
 public class UnityClientConnector : DefaultWorkerConnector
@@ -14,6 +16,7 @@ public class UnityClientConnector : DefaultWorkerConnector
     protected override void HandleWorkerConnectionEstablished()
     {
         PlayerLifecycleHelper.AddClientSystems(Worker.World);
+        GameObjectCreationHelper.EnableStandardGameObjectCreation(Worker.World);
     }
 
     protected override string SelectDeploymentName(DeploymentList deployments)

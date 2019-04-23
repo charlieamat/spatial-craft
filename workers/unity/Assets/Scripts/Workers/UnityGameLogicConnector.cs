@@ -1,5 +1,6 @@
 ﻿using Improbable;
 using Improbable.Gdk.Core;
+using Improbable.Gdk.GameObjectCreation;
 using Improbable.Gdk.PlayerLifecycle;
 using Improbable.Gdk.TransformSynchronization;
 
@@ -17,6 +18,7 @@ public class UnityGameLogicConnector : DefaultWorkerConnector
     {
         Worker.World.GetOrCreateManager<MetricSendSystem>();
         PlayerLifecycleHelper.AddServerSystems(Worker.World);
+        GameObjectCreationHelper.EnableStandardGameObjectCreation(Worker.World);
     }
 
     private static EntityTemplate CreatePlayerEntityTemplate(string workerId, byte[] serializedArguments)
