@@ -7,6 +7,7 @@ using Improbable.Gdk.TransformSynchronization;
 public class UnityGameLogicConnector : DefaultWorkerConnector
 {
     public const string WorkerType = "UnityGameLogic";
+    public const string PlayerEntityType = "Player";
         
     private async void Start()
     {
@@ -29,7 +30,7 @@ public class UnityGameLogicConnector : DefaultWorkerConnector
 
         var template = new EntityTemplate();
         template.AddComponent(new Position.Snapshot(), clientAttribute);
-        template.AddComponent(new Metadata.Snapshot("Player"), serverAttribute);
+        template.AddComponent(new Metadata.Snapshot(PlayerEntityType), serverAttribute);
         TransformSynchronizationHelper.AddTransformSynchronizationComponents(template, clientAttribute);
         PlayerLifecycleHelper.AddPlayerLifecycleComponents(template, workerId, serverAttribute);
 

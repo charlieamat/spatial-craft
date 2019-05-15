@@ -7,7 +7,7 @@ using Improbable.Worker.CInterop;
 public class UnityClientConnector : DefaultWorkerConnector
 {
     public const string WorkerType = "UnityClient";
-        
+
     private async void Start()
     {
         await Connect(WorkerType, new ForwardingDispatcher()).ConfigureAwait(false);
@@ -17,7 +17,7 @@ public class UnityClientConnector : DefaultWorkerConnector
     {
         PlayerLifecycleHelper.AddClientSystems(Worker.World);
         TransformSynchronizationHelper.AddClientSystems(Worker.World);
-        GameObjectCreationHelper.EnableStandardGameObjectCreation(Worker.World);
+        GameObjectCreationHelper.EnableStandardGameObjectCreation(Worker.World, new PlayerGameObjectCreator(Worker));
     }
 
     protected override string SelectDeploymentName(DeploymentList deployments)
