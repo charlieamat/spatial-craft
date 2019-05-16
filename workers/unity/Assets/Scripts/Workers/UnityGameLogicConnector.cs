@@ -1,4 +1,5 @@
-﻿using Improbable;
+﻿using Com.Infalliblecode;
+using Improbable;
 using Improbable.Gdk.Core;
 using Improbable.Gdk.GameObjectCreation;
 using Improbable.Gdk.PlayerLifecycle;
@@ -31,7 +32,7 @@ public class UnityGameLogicConnector : DefaultWorkerConnector
         var template = new EntityTemplate();
         template.AddComponent(new Position.Snapshot(), clientAttribute);
         template.AddComponent(new Metadata.Snapshot(PlayerEntityType), serverAttribute);
-        TransformSynchronizationHelper.AddTransformSynchronizationComponents(template, clientAttribute);
+        template.AddComponent(new PlayerTransform.Snapshot(), clientAttribute);
         PlayerLifecycleHelper.AddPlayerLifecycleComponents(template, workerId, serverAttribute);
 
         template.SetReadAccess(UnityClientConnector.WorkerType, AndroidClientWorkerConnector.WorkerType, iOSClientWorkerConnector.WorkerType, serverAttribute);

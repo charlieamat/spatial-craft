@@ -1,0 +1,9 @@
+package com.infalliblecode;
+
+import "improbable/vector3.schema";
+
+component PlayerTransform {
+	id = 4000;
+	improbable.Vector3f position = 1;
+	improbable.Vector3f rotation = 2;
+}
