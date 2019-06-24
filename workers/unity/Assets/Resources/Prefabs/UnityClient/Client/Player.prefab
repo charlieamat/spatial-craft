@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5400000}
   - component: {fileID: 8200000}
   - component: {fileID: 2338517925327922519}
+  - component: {fileID: 8959391020327296845}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -81,7 +82,7 @@ MonoBehaviour:
     MaximumX: 90
     smooth: 0
     smoothTime: 5
-    lockCursor: 1
+    lockCursor: 0
   m_UseFovKick: 1
   m_FovKick:
     Camera: {fileID: 0}
@@ -302,6 +303,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450aa037f9a348a1b1ed2ee728358fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8959391020327296845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f1295b1cc34bf19eb38f5438d0de99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  distance: 3
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

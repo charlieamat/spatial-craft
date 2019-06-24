@@ -24,6 +24,7 @@ internal static class SnapshotGenerator
         var snapshot = new Snapshot();
 
         AddPlayerSpawner(snapshot);
+        AddResources(snapshot);
         return snapshot;
     }
 
@@ -37,6 +38,22 @@ internal static class SnapshotGenerator
         template.AddComponent(new Persistence.Snapshot(), serverAttribute);
         template.AddComponent(new PlayerCreator.Snapshot(), serverAttribute);
 
+        template.SetReadAccess(UnityClientConnector.WorkerType, UnityGameLogicConnector.WorkerType, AndroidClientWorkerConnector.WorkerType, iOSClientWorkerConnector.WorkerType);
+        template.SetComponentWriteAccess(EntityAcl.ComponentId, serverAttribute);
+
+        snapshot.AddEntity(template);
+    }
+
+    private static void AddResources(Snapshot snapshot)
+    {
+        var serverAttribute = UnityGameLogicConnector.WorkerType;
+        
+        var template = new EntityTemplate();
+        template.AddComponent(new Position.Snapshot(), serverAttribute);
+        template.AddComponent(new Metadata.Snapshot { EntityType = "Resource" }, serverAttribute);
+        template.AddComponent(new Persistence.Snapshot(), serverAttribute);
+        template.AddComponent(new Com.Infalliblecode.Resource.Snapshot(), serverAttribute);
+        
         template.SetReadAccess(UnityClientConnector.WorkerType, UnityGameLogicConnector.WorkerType, AndroidClientWorkerConnector.WorkerType, iOSClientWorkerConnector.WorkerType);
         template.SetComponentWriteAccess(EntityAcl.ComponentId, serverAttribute);
 

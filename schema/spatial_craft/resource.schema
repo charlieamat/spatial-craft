@@ -1,0 +1,10 @@
+package com.infalliblecode;
+
+type CollectRequest {}
+type CollectResponse {}
+
+component Resource {
+    id = 4001;
+    bool collected = 1;
+    command CollectResponse collect(CollectRequest);
+}
